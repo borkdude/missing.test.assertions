@@ -1,4 +1,4 @@
-# missing.test.assertions
+# missing-test-assertions
 
 [![Clojars Project](https://img.shields.io/clojars/v/borkdude/missing-test-assertions.svg)](https://clojars.org/borkdude/missing.test.assertions)
 [![cljdoc badge](https://cljdoc.org/badge/borkdude/missing-test-assertions)](https://cljdoc.org/d/borkdude/missing.test.assertions/CURRENT)
