@@ -38,8 +38,7 @@ WARNING: no assertions made in test a-test
 - When registering your own `clojure.test/report` `:begin-test-var` and
   `:end-test-var` hooks, call `missing.test.assertions/register!` afterwards. This will
   redefine the `missing.test.assertions` hooks while your hooks keep working.
-- The default behavior when discovering that no assertions were made in a test
-  is printing a message. If you want an exception, call
+- The default behavior in absence of test assertions is printing a message. If you want an exception, call
   `(missing.test.assertions/register! {:throw? true})`.
 
 ## Test
