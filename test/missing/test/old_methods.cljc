@@ -10,4 +10,4 @@
                        :cljs [::t/default :end-test-var]) [_]
   (println "End test var."))
 
-(register!)
+(register! {:throw? false})

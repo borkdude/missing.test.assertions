@@ -1,4 +1,4 @@
-(defproject borkdude/missing.test.assertions "0.0.1"
+(defproject borkdude/missing.test.assertions "0.0.2"
   :description "No assertion warnings. Naw!"
   :url "https://github.com/borkdude/missing.test.assertions"
   :license {:name "EPL-1.0"
