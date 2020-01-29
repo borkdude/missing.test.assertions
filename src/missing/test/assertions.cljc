@@ -1,6 +1,7 @@
 (ns missing.test.assertions
   (:require [clojure.test :refer [report
                                   #?(:clj *report-counters*)
+                                  #?(:bb *report-counters*)
                                   #?(:cljs get-current-env)]
              :as t]))
 
@@ -8,6 +9,7 @@
 
 (defn- report-counters []
   #?(:clj @*report-counters*
+     :bb @*report-counters*     
      :cljs (:report-counters (get-current-env))))
 
 (defn- assertion-count []
@@ -24,8 +26,10 @@
   ([] (register! nil))
   ([{:keys [:throw?]}]
    (let [old-method (get-method report #?(:clj :begin-test-var
+                                          :bb :begin-test-var     
                                           :cljs [::t/default :begin-test-var]))]
      (defmethod report #?(:clj :begin-test-var
+                          :bb :begin-test-var     
                           :cljs [::t/default :begin-test-var]) [m]
        (let [ret (when old-method (old-method m))]
          (swap! state assoc (-> m :var meta :name) (assertion-count))
@@ -42,6 +46,7 @@
              ac (assertion-count)]
          (when (= ac (get @state test-name))
            (binding #?(:clj [*out* *err*]
+                       :bb [*out* *err*]     
                        :cljs [*print-fn* *print-err-fn*])
              (if throw?
                (throw (ex-info "No assertions made in test." {:report-counters (report-counters)}))
