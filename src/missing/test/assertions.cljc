@@ -32,8 +32,10 @@
          ret)))
 
    (let [old-method (get-method report #?(:clj :end-test-var
+                                          :bb :end-test-var     
                                           :cljs [::t/default :end-test-var]))]
      (defmethod report #?(:clj :end-test-var
+                          :bb :end-test-var
                           :cljs [::t/default :end-test-var]) [m]
        (let [test-name (-> m :var meta :name)
              ret (when old-method (old-method m))
